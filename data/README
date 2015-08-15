@@ -1,0 +1,17 @@
+This is a sample data set for trying out ICP variants. It contains 3 sets of synthetic data, and 2 sets of real data. The data is spit into the following 5 categories:
+
+car -- real segmented scans of a single car from a velodyne
+hall -- simulated scans of a hallway
+outdoor -- simulated scans of an outdoor scene
+shapes -- simulated scans of some shapes
+
+For some of the data approximate ground truth is available in the form of .tfm files associated with each scan. Applying the transformation in each .tfm file to the corresponding scan should bring each dataset into alignment. For the simulated datasets this alignment is exact.
+
+The .ascii files contain scans formatted as tab deliminated text files. Each line of each file corresponds to one point.
+
+.tfm files contain transformations in a roll, pitch, yaw parameterization. sample_base.tfm is an example of the format. A quick explanation:
+     RX RAD 0.	   -- rotate around the x-axis by 0. radians
+     RY RAD 0.	   -- rotate around the y-axis by 0. radians
+     RZ RAD 0.	   -- rotate around the z-axis by 0. radians
+     T M 0. 0. 0.  -- translate by (x, y, z) = (0., 0., 0).
+All of the above operations are performed in the order they're specified i.e. "R_z(R_y(R_x(data)))+translation"
